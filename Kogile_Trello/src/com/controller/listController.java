@@ -25,26 +25,20 @@ public class listController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+//		insertForm.do, insertAction.do, list.do, detail.do
+//	     /MVC/insertForm.do
 		String requestURI = request.getRequestURI();
-		System.out.println("uri" + requestURI + "\n");
 		String contextPath = request.getContextPath();
-		System.out.println("contextPath :" + contextPath + "\n");
 		String command = requestURI.substring(contextPath.length()+1);
 		System.out.println("command :" + command + "\n");
 		
 		Action action = null;
 		ActionForward forward = null;
 		
-		System.out.println("insertcheck01");
-		if(command.equals("insertcheck.do")) {
-			System.out.println("insertcheck02");
-			
+		if(command.equals("insert_form.do")) {
 			action = new InsertActionForm();
-			System.out.println("insertcheck03");
 			try {
 				forward = action.excute(request, response);
-				System.out.println("insertcheck04");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -34,7 +34,7 @@
 </head>
 <body>
 	
-	<a href="insertcheck.do">제목쓰기</a>	
+	<a href="insert_form.jsp">제목쓰기</a>	
 	<table width="500" border="1" cellpadding="0" cellspacing="0">
 	<tr>
 		<td>체크리스트제목</td>

@@ -16,7 +16,7 @@ public class InsertAction implements Action {
 		service.insertCheckListBoard(request);
 		
 		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
+		forward.setRedirect(true);
 		forward.setPath("list.do");
 		return forward;
 	}

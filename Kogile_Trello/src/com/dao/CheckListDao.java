@@ -17,7 +17,6 @@ public class CheckListDao {
 	private static CheckListDao dao = new CheckListDao();
 	public static CheckListDao getInstance() {
 		return dao;
-		
 	}
 	
 	
@@ -34,8 +33,6 @@ public class CheckListDao {
 		}
 		return new SqlSessionFactoryBuilder().build(in);
 	}
-	
-
 	
 	// insertChecklist
 	//	--------------------------------------------------------------
@@ -58,10 +55,7 @@ public class CheckListDao {
 		}finally {
 			sqlSession.close();
 		}
-		
-		
 		return re;
-		
 	}
 	
 	// readList + count <== 페이지 영역 
@@ -94,7 +88,6 @@ public class CheckListDao {
 		
 		try {
 			list = sqlSession.getMapper(BoardMapper.class).listBoard(new RowBounds(startRow, 2), search);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -103,10 +96,5 @@ public class CheckListDao {
 		
 		return list;
 	}
-	
-
-
-
-	
 	
 }

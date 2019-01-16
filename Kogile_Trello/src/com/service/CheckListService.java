@@ -12,9 +12,9 @@ import com.dao.CheckListDao;
 
 public class CheckListService {
 	
-	private static CheckListService service = new CheckListService();
 	private static CheckListDao dao;
-	private static final int PAGE_SIZE =2 ;
+	private static CheckListService service = new CheckListService();
+	private static final int PAGE_SIZE = 2;
 	
 	public static CheckListService getInstance() {
 		dao = CheckListDao.getInstance();
@@ -25,7 +25,6 @@ public class CheckListService {
 	public int insertCheckListBoard(HttpServletRequest request)throws Exception {
 		
 		request.setCharacterEncoding("utf-8");
-		
 		Board board = new Board();
 		
 		board.setCheck_title(request.getParameter("check_title"));
@@ -37,7 +36,6 @@ public class CheckListService {
 
 	public ListModel listBoardService(int requestPage, HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		
 		Search search = new Search();
 		HttpSession session = request.getSession();
 		
