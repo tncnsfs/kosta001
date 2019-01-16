@@ -2,7 +2,7 @@ package com.service;
 
 import java.io.Serializable;
 
-public class Search {
+public class Search implements Serializable {
 
 	private String[] area;
 	private String searchKey;

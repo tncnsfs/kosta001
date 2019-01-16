@@ -6,6 +6,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.service.Board" alias="Board"/>
+		<typeAlias type="com.service.Search" alias = "Search"/>
 	</typeAliases>
 	
 	<environments default="development">

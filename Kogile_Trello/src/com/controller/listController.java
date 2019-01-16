@@ -13,6 +13,7 @@ import com.action.Action;
 import com.action.ActionForward;
 import com.action.InsertAction;
 import com.action.InsertActionForm;
+import com.action.ListAction;
 
 @WebServlet("*.do")
 public class listController extends HttpServlet {
@@ -55,7 +56,17 @@ public class listController extends HttpServlet {
 				e.printStackTrace();
 				// TODO: handle exception
 			}
+		}else if(command.equals("list.do")) {
+			action = new ListAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
+		
+		
 		
 		if(forward != null) {
 			if(forward.isRedirect()) {
