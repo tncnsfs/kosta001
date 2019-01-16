@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.mapper.BoardMapper">
+	<cache/>
+	
+	<insert id="insertchecklist" parameterType="Board">
+		insert into checklist values(checklist_seq.nextval, #{check_title}, 2)
+	</insert>
+	
+	<select id="readchecklist" parameterType="Board" resultType="Search">
+		select * from checklist where check_title like 
+	
+	</select>
+
+</mapper>
