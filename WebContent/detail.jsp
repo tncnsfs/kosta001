@@ -13,15 +13,11 @@
 </head>
 <body>	
 	<ul>
-		<li>글번호:${board.seq }</li>
-		<li>제목:${board.title }</li>
-		<li>작성자:${board.writer }</li>
-		<li>내용:${board.contents }</li>
-		<li>파일:<a href="download.jsp?filename=${board.fname }">${board.fname }</a></li>
+		<li>제목:${board.check_title }</li>
 	</ul>
 	<br>
-	<a href="updateForm.do?seq=${board.checklist_no }">수정하기</a>
-	<a href="delete.do?seq=${board.checklist_no }">삭제하기</a>
+	<a href="updateForm.do?checklist_no=${board.checklist_no }">수정하기</a>
+	<a href="delete.do?checklist_no=${board.checklist_no }">삭제하기</a>
 	<a href="list.do">목록보기</a>
 </body>
 </html>

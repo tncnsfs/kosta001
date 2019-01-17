@@ -11,9 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.action.Action;
 import com.action.ActionForward;
+import com.action.DeleteAction;
+import com.action.DetailAction;
 import com.action.InsertAction;
 import com.action.InsertActionForm;
 import com.action.ListAction;
+import com.action.UpdateAction;
+import com.action.UpdateActionForm;
+
 
 @WebServlet("*.do")
 public class listController extends HttpServlet {
@@ -57,9 +62,36 @@ public class listController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		
-		
+		}else if(command.equals("detail.do")){
+    		action = new DetailAction();
+    		try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("delete.do")) {
+    		action = new DeleteAction();
+    		try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("updateForm.do")){
+    		action = new UpdateActionForm();
+    		try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("updateAction.do")){
+    		action = new UpdateAction();
+    		try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	} 	
+
 		
 		
 		if(forward != null) {

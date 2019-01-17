@@ -19,7 +19,6 @@ public class CheckListDao {
 		return dao;
 	}
 	
-	
 	public SqlSessionFactory getSqlSessionFactory() {
 		
 		String resource = "mybatis-config.xml";
@@ -61,7 +60,7 @@ public class CheckListDao {
 	// readList + count <== 페이지 영역 
 	//	--------------------------------------------------------------
 	// 총글갯수 구하기
-	public int countBoard(Search search) {
+/*	public int countBoard(Search search) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = 0;
 		try {
@@ -79,15 +78,17 @@ public class CheckListDao {
 			sqlSession.close();
 		}
 		return re;
-	}
+	}*/
 	//	--------------------------------------------------------------
-	public List<Board> listboard(Search search, int startRow) {
+	public List<Board> listboard(Search search) {
+//	public List<Board> listboard(Search search, int startRow) {
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Board> list = null;
 		
 		try {
-			list = sqlSession.getMapper(BoardMapper.class).listBoard(new RowBounds(startRow, 5), search);
+			list = sqlSession.getMapper(BoardMapper.class).listBoard(search);
+//			list = sqlSession.getMapper(BoardMapper.class).listBoard(new RowBounds(startRow, 5), search);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -96,6 +97,62 @@ public class CheckListDao {
 		return list;
 	}
 
+	public Board detailBoard(int checklist_no) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession(); //sqlSession객체를 가져올수 있다.
+		Board board = null;
+		
+		try {
+			board = sqlSession.getMapper(BoardMapper.class).detailBoard(checklist_no);
+			// Board객체를 구해준다. 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return board;
+	}
+
+
+	public int deleteBoard(Board board) {
+		
+		int re = -1;
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			re = sqlSession.getMapper(BoardMapper.class).deleteBoard(board);
+			if(re > 0){
+				sqlSession.commit();
+			}else{
+				sqlSession.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return re;
+		
+	}
+	
+	public int updateBoard(Board board){
+		int re = -1;
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			re = sqlSession.getMapper(BoardMapper.class).updateBoard(board);
+			if(re > 0){
+				sqlSession.commit();
+			}else{
+				sqlSession.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return re;
+	}
 
 	
 }
