@@ -18,9 +18,7 @@
 	}
 	
 	int requestPage = Integer.parseInt(pageNum);
-	
 	CheckListService service = CheckListService.getInstance();
-	
 	ListModel listModel = service.listBoardService(requestPage, request);
 	request.setAttribute("listModel", listModel);
 	
