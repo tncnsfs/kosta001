@@ -13,21 +13,20 @@
 		select * from checklist 
 			<if test ="area">
 			 <where>
-			  check_title LIKE %aa% OR writer LIKE %aa%
-<!-- 			  <foreach collection="area" item ="item" separator="OR"
+			  <foreach collection="area" item ="item" separator="OR"
 			  	open = "("  close = ")">
 			  	${item} LIKE #{searchKey} 
 			  	</foreach>
- -->			 </where>
+			 </where>
 			</if>
+			order by checklist_no desc
 	</select>	
 	
 	
-	<!--  <select id="countBoard" resultType="int" parameterType="Search">
+<!-- 	 <select id="countBoard" resultType="int" parameterType="Search">
    	select count(*) from checklist 
 			<if test ="area">
 			 <where>
-			  title LIKE %aa% OR writer LIKE %aa%
 			  <foreach collection="area" item="item" separator="OR"
 			  	open = "("  close = ")">
 			  	${item} LIKE #{searchKey} 

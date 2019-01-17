@@ -58,15 +58,15 @@ public class CheckListDao {
 		return re;
 	}
 	
-	// readList + count <== ÆäÀÌÁö ¿µ¿ª 
+	// readList + count <== íŽ˜ì´ì§€ ì˜ì—­ 
 	//	--------------------------------------------------------------
-	// ÃÑ±Û°¹¼ö ±¸ÇÏ±â
+	// ì´ê¸€ê°¯ìˆ˜ êµ¬í•˜ê¸°
 	public int countBoard(Search search) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = 0;
 		try {
 			re = sqlSession.getMapper(BoardMapper.class).countBoard(search);
-			System.out.println("re´Â:"+ re);
+			System.out.println("reëŠ”:"+ re);
 			if(re >0){
 				sqlSession.commit();
 			}else{
@@ -87,14 +87,15 @@ public class CheckListDao {
 		List<Board> list = null;
 		
 		try {
-			list = sqlSession.getMapper(BoardMapper.class).listBoard(new RowBounds(startRow, 2), search);
+			list = sqlSession.getMapper(BoardMapper.class).listBoard(new RowBounds(startRow, 5), search);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			sqlSession.close();
 		}
-		
 		return list;
 	}
+
+
 	
 }

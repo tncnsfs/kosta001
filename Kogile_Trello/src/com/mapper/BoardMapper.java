@@ -12,7 +12,6 @@ public interface BoardMapper {
 	
 	List<Board> listBoard(RowBounds row, Search search);
 	int countBoard(Search search);
-
 	
 	
 	/*List<Board> listBoard(Search search);

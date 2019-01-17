@@ -14,7 +14,7 @@ public class CheckListService {
 	
 	private static CheckListDao dao;
 	private static CheckListService service = new CheckListService();
-	private static final int PAGE_SIZE = 2;
+	private static final int PAGE_SIZE = 5;
 	
 	public static CheckListService getInstance() {
 		dao = CheckListDao.getInstance();
@@ -34,12 +34,14 @@ public class CheckListService {
 		
 	}
 
+
+
 	public ListModel listBoardService(int requestPage, HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		Search search = new Search();
 		HttpSession session = request.getSession();
 		
-		//°Ë»ö½Ã
+		//ê²€ìƒ‰ì‹œ
 		if(request.getParameterValues("area") != null) {
 			session.removeAttribute("search");
 			search.setArea(request.getParameterValues("area"));
@@ -47,42 +49,30 @@ public class CheckListService {
 			session.setAttribute("search", search);
 		}
 		
-		// °Ë»öÈÄ ÆäÀÌÁö Å¬¸¯
+		// ê²€ìƒ‰í›„ í˜ì´ì§€ í´ë¦­
 		else if((Search) session.getAttribute("search") != null) {
 			search = (Search) session.getAttribute("search");
 		}
 		
-		// ÆäÀÌÁö´ç ±Û°¹¼ö, ÃÑ ±Û°¹¼ö, ÃÑÆäÀÌÁö¼ö, ÇöÀçÆäÀÌÁö
-		// ½ÃÀÛÆäÀÌÁö, ¸¶Áö¸·ÆäÀÌÁö , startRow, endRow 
-		
-		// ÃÑ±Û°¹¼ö ±¸ÇÏ±â
+		// í˜ì´ì§€ë‹¹ ê¸€ê°¯ìˆ˜, ì´ ê¸€ê°¯ìˆ˜, ì´í˜ì´ì§€ìˆ˜, í˜„ì¬í˜ì´ì§€
+		// ì‹œì‘í˜ì´ì§€, ë§ˆì§€ë§‰í˜ì´ì§€ , startRow, endRow 
+		// ì´ê¸€ê°¯ìˆ˜ êµ¬í•˜ê¸°
 		int totalCount = dao.countBoard(search);
-		
-		
-		// ÃÑ ÆäÀÌÁö¼ö ±¸ÇÏ±â
+		// ì´ í˜ì´ì§€ìˆ˜ êµ¬í•˜ê¸°
 		int totalPageCount = totalCount/PAGE_SIZE;
-		
-		// ½ÃÀÛÆäÀÌÁö, ¸¶Áö¸·ÆäÀÌÁö ±¸ÇÏ±â 
-		// ½ÃÀÛÆäÀÌÁö = ÇöÀçÆäÀÌÁö (ÇöÀçÆäÀÌÁö -1) %5
+		// ì‹œì‘í˜ì´ì§€, ë§ˆì§€ë§‰í˜ì´ì§€ êµ¬í•˜ê¸° 
+		// ì‹œì‘í˜ì´ì§€ = í˜„ì¬í˜ì´ì§€ (í˜„ì¬í˜ì´ì§€ -1) %5
 		int startPage = (requestPage - 1) % 5;
-		
-		// ¸¶Áö¸·ÆäÀÌÁö ±¸ÇÏ±â
-		// ¸¶Áö¸·ÆäÀÌÁö = ½ÃÀÛÆäÀÌÁö(ÇöÀçÆäÀÌÁö +4) -> µğÆúÆ® °ªÀÌ 5ÆäÀÌÁö ±âÁØ 
+		// ë§ˆì§€ë§‰í˜ì´ì§€ êµ¬í•˜ê¸°
+		// ë§ˆì§€ë§‰í˜ì´ì§€ = ì‹œì‘í˜ì´ì§€(í˜„ì¬í˜ì´ì§€ +4) -> ë””í´íŠ¸ ê°’ì´ 5í˜ì´ì§€ ê¸°ì¤€ 
 		int endPage = startPage + 4;
 		if(endPage > totalPageCount) {
 			endPage = totalPageCount;
 		}
-		
-		
-		
-		// starRow ½ÃÀÛ±Û ±¸ÇÏ±â: (ÇöÀçÆäÀÌÁö -1) * ÆäÀÌµğÀå ±Û°¹¼ö
+//		 starRow ì‹œì‘ê¸€ êµ¬í•˜ê¸°: (í˜„ì¬í˜ì´ì§€ -1) * í˜ì´ë””ì¥ ê¸€ê°¯ìˆ˜
 		int startRow = (requestPage -1)* PAGE_SIZE;
 		List<Board> list = dao.listboard(search, startRow);
-		
 		ListModel listModel = new ListModel(list, requestPage, totalPageCount, startPage, endPage);
-		
-		
-		
 		return listModel;
 	}
 	
