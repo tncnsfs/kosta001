@@ -1,3 +1,5 @@
+<%@page import="com.service.ListModel"%>
+<%@page import="com.service.CheckListService"%>
 <%@page import="java.util.List"%>
 <%@page import="com.service.Board" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,6 +8,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<%
+	request.setCharacterEncoding("utf-8");
+
+	String pageNum = request.getParameter("pageNum");
+	if(pageNum == null){
+		pageNum = "1";
+	}
+
+	int requestPage = Integer.parseInt(pageNum);
+	
+	CheckListService service = CheckListService.getInstance();
+	
+	ListModel listModel = service.listBoardService(requestPage, request);
+	request.setAttribute("listModel", listModel);
+
+%>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -21,7 +41,7 @@
 			<td>체크리스트 제목</td>
 		</tr>
 
-		<c:forEach var="board" items="${list }">
+		<c:forEach var="board" items="${listModel.list }">
 			<tr>
 				<td><a href="detail.do?checklist_no=${board.checklist_no }">${board.check_title }</a></td>
 			</tr>
@@ -33,6 +53,8 @@
 		<input type="text" name="searchKey" size="10"></input>
 		<input type="submit" value="검색">
 	</form>
+	
+
 	
 </body>
 </html>

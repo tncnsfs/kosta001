@@ -10,7 +10,8 @@ import com.service.Search;
 public interface BoardMapper {
 	int insertchecklist(Board board);
 	
-	List<Board> listBoard(Search search);
+	List<Board> listBoard(RowBounds row, Search search);
+	int countBoard(Search search);
 	
 	Board detailBoard(int checklist_no);
 	
@@ -20,8 +21,8 @@ public interface BoardMapper {
 	
 	
 	/*
-	 * List<Board> listBoard(RowBounds row, Search search);
-		int countBoard(Search search);
+	 * List<Board> listBoard(Search search);
+		
 	*/
 	
 }

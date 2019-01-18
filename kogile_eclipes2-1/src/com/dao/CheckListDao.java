@@ -60,7 +60,7 @@ public class CheckListDao {
 	// readList + count <== 페이지 영역 
 	//	--------------------------------------------------------------
 	// 총글갯수 구하기
-/*	public int countBoard(Search search) {
+	public int countBoard(Search search) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = 0;
 		try {
@@ -78,17 +78,15 @@ public class CheckListDao {
 			sqlSession.close();
 		}
 		return re;
-	}*/
+	}
 	//	--------------------------------------------------------------
-	public List<Board> listboard(Search search) {
-//	public List<Board> listboard(Search search, int startRow) {
+	public List<Board> listboard(Search search, int startRow) {
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Board> list = null;
 		
 		try {
-			list = sqlSession.getMapper(BoardMapper.class).listBoard(search);
-//			list = sqlSession.getMapper(BoardMapper.class).listBoard(new RowBounds(startRow, 5), search);
+			list = sqlSession.getMapper(BoardMapper.class).listBoard(new RowBounds(startRow,1),search);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -153,6 +151,7 @@ public class CheckListDao {
 		}
 		return re;
 	}
+
 
 	
 }

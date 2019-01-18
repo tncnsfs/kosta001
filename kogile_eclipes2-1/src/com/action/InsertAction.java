@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dao.CheckListDao;
 import com.service.Board;
-//import com.service.CheckListService;
 
 public class InsertAction implements Action {
 
