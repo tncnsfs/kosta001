@@ -57,15 +57,15 @@ public class CheckListDao {
 		return re;
 	}
 	
-	// readList + count <== 페이지 영역 
+	// readList + count <== �럹�씠吏� �쁺�뿭 
 	//	--------------------------------------------------------------
-	// 총글갯수 구하기
+	// 珥앷�媛��닔 援ы븯湲�
 	public int countBoard(Search search) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = 0;
 		try {
 			re = sqlSession.getMapper(BoardMapper.class).countBoard(search);
-			System.out.println("re는:"+ re);
+			System.out.println("re�뒗:"+ re);
 			if(re >0){
 				sqlSession.commit();
 			}else{
@@ -86,7 +86,7 @@ public class CheckListDao {
 		List<Board> list = null;
 		
 		try {
-			list = sqlSession.getMapper(BoardMapper.class).listBoard(new RowBounds(startRow, 1), search);
+			list = sqlSession.getMapper(BoardMapper.class).listBoard(new RowBounds(startRow, 5), search);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -96,7 +96,7 @@ public class CheckListDao {
 	}
 
 	public Board detailBoard(int checklist_no) {
-		SqlSession sqlSession = getSqlSessionFactory().openSession(); //sqlSession객체를 가져올수 있다.
+		SqlSession sqlSession = getSqlSessionFactory().openSession(); //sqlSession媛앹껜瑜� 媛��졇�삱�닔 �엳�떎.
 		Board board = null;
 		
 		try {
