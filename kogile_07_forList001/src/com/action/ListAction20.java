@@ -16,7 +16,7 @@ public class ListAction20 implements Action {
 			pageNum ="1";
 		}
 		int requestPage = Integer.parseInt(pageNum);
-		ListModel listModel = service.listBoardService(requestPage, request);
+		ListModel listModel = service.listBoardService20(requestPage, request);
 		request.setAttribute("listModel", listModel);
 		
 

@@ -92,7 +92,7 @@ public class CheckListService {
 			search = (Search)session.getAttribute("search");
 		}
 		
-		int totalCount = dao.countBoard(search);
+		int totalCount = dao.countBoard20(search);
 		
 		int totalPageCount = totalCount/PAGE_SIZE;
 		if(totalCount%PAGE_SIZE > 0){

@@ -44,7 +44,7 @@
 		<tr>
 			<td>리스트 입력</td>
 			<form action="insertAction20.do" method="post">
-					 	 <input type="text" name=" list_info"><br><br>
+					 	list제목은: <input type="text" name=" list_info"><br><br>
 						<input type="submit" value="등록">
 			</form>
 		</tr>

@@ -14,6 +14,7 @@ public class InsertAction20 implements Action {
 		request.setCharacterEncoding("utf-8");
 		
 		Board board = new Board();
+		board.setChecklist_no(Integer.parseInt(request.getParameter("checklist_no")));
 		board.setList_info(request.getParameter("list_info"));
 
 		dao.insertlist(board);

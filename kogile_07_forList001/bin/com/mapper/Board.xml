@@ -10,7 +10,7 @@
 	</insert>
 
 	<insert id="insertlist" parameterType="Board">
-		insert into list values(list_seq.nextval, #{list_info}, 1)
+		insert into list values(list_seq.nextval, #{list_info},null, #{checklist_no})
 	</insert>
 
 	<select id="listBoard" resultType="Board" parameterType="Search">

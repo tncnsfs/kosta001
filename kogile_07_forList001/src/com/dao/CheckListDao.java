@@ -36,13 +36,8 @@ public class CheckListDao {
 	// insertChecklist
 	//	--------------------------------------------------------------
 	public int insertchecklist(Board board) {
-		
 		SqlSession sqlSession = dao.getSqlSessionFactory().openSession();
-		
 		int re = -1;
-		
-//		dao.deleteBoard(board)
-		
 		try {
 			re = sqlSession.getMapper(BoardMapper.class).insertchecklist(board);
 			if(re >0) {
@@ -61,9 +56,7 @@ public class CheckListDao {
 	
 	public int insertlist(Board board) {
 		SqlSession sqlSession = dao.getSqlSessionFactory().openSession();
-		
 		int re = -1;
-		
 		try {
 			re = sqlSession.getMapper(BoardMapper.class).insertlist(board);
 			if(re >0) {
