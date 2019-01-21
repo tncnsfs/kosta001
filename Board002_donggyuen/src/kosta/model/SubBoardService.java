@@ -32,7 +32,7 @@ public class SubBoardService {
 	public List<SubBoard> subListBoardService(HttpServletRequest request) throws Exception{
 		request.setCharacterEncoding("UTF-8");
 		
-		int seq = Integer.parseInt(request.getParameter("seq"));;
+		int seq = Integer.parseInt(request.getParameter("seq"));
 		System.out.println(seq);
 		
 		List<SubBoard> list = dao2.subListBoard(seq);

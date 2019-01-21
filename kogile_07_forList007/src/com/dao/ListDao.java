@@ -2,18 +2,12 @@ package com.dao;
 
 import java.io.InputStream;
 import java.util.List;
-
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-import com.mapper.BoardMapper;
 import com.mapper.ListBoardMapper;
-import com.service.Board;
 import com.service.ListBoard;
-import com.service.Search;
 
 public class ListDao {
 	private static ListDao dao = new ListDao();
@@ -57,37 +51,15 @@ public class ListDao {
 		return re;
 	}
 	
-	// readList + count <== 페이지 영역 
-	//	--------------------------------------------------------------
-	// 총글갯수 구하기
-	public int countBoard20(Search search) {
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		int re = 0;
-		try {
-			re = sqlSession.getMapper(ListBoardMapper.class).countBoard20(search);
-			System.out.println("re는:"+ re);
-			if(re >0){
-				sqlSession.commit();
-			}else{
-				sqlSession.rollback();
-			}
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}finally {
-			sqlSession.close();
-		}
-		return re;
-	}
 	//	--------------------------------------------------------------
 	
-	public List<ListBoard> listBoard20(Search search, int startRow) {
+	public List<ListBoard> listBoard20(int checklist_no) {
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<ListBoard> list = null;
 		
 		try {
-			list = sqlSession.getMapper(ListBoardMapper.class).listBoard20(new RowBounds(startRow, 5), search);
+			list = sqlSession.getMapper(ListBoardMapper.class).listBoard20(checklist_no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

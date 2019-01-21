@@ -1,5 +1,3 @@
-<%@page import="com.service.CheckListModel"%>
-<%@page import="com.service.ListModel"%>
 <%@page import="com.service.CheckListService"%>
 <%@page import="java.util.List"%>
 <%@page import="com.service.Board" %>
@@ -10,21 +8,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<%
-	request.setCharacterEncoding("utf-8");
-
-	String pageNum = request.getParameter("pageNum");
-	if(pageNum == null){
-		pageNum= "1";
-	}
-
-	int requestPage = Integer.parseInt(pageNum);
-	
-	CheckListService service = CheckListService.getInstance();
-	
-	CheckListModel listModel = service.listBoardService(requestPage, request);
-	request.setAttribute("listModel", listModel);
-%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,7 +26,7 @@
 		<tr>
 			<td>체크리스트내용</td>
 		</tr>
-		<c:forEach var="board" items="${listModel.list }">
+		<c:forEach var="board" items="${list }">
 			<tr>
 				<td><a href="detail.do?checklist_no=${board.checklist_no }">${board.check_title }</a></td>
 			</tr>
