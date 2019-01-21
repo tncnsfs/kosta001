@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kosta.mapper.SubBoardMapper">
+	<cache />
+
+	<select id="subListBoard" resultType="SubBoard" parameterType="int">
+		select * from SubBoard where seq = #{seq}
+	</select>
+	
+	<insert id="subInsertBoard" parameterType="SubBoard">
+		INSERT into SubBoard values(SubBoard_seq.nextval,#{title},#{writer},#{contexts},sysdate,#{seq})
+	</insert>
+	
+		<delete id="subDeleteBoard" parameterType="SubBoard">
+		delete from SubBoard where seq = #{seq}
+	</delete>
+</mapper>

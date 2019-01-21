@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kosta.mapper.BoardMapper">
+	<cache />
+
+	<select id="listBoard" resultType="Board">
+		select * from BoardList order by seq desc
+	</select>
+	<insert id="insertBoard" parameterType="Board">
+		insert into BoardList values(BoardList_seq.nextval,#{pass},#{title},#{writer},#{contexts},sysdate,0)
+	</insert>
+	<select id="detailBoard" parameterType="int" resultType="Board">
+		select * from BoardList where seq = #{seq}
+	</select>
+	<update id="updateBoard" parameterType="Board" >
+		update BoardList set title = #{title} , contexts = #{contexts} where seq= #{seq} and pass= #{pass} 
+	</update>
+	<delete id="deleteBoard" parameterType="Board">
+		delete from BoardList where seq = #{seq}
+	</delete>
+	<update id="hitCount" parameterType="Board" >
+		update BoardList set hitcount = #{hitcount} + 1 where seq= #{seq}
+	</update>
+
+</mapper>
