@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Web_Project
+Bundle-SymbolicName: Web_Project
+Bundle-Version: 1.0.0.qualifier
