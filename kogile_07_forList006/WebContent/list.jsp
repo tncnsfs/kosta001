@@ -46,7 +46,8 @@
 
 		<c:forEach var="board" items="${listModel.list }">
 			<tr>
-				<td><a href="detail.do?checklist_no=${board.checklist_no }">${board.check_title }</a></td>
+				<%-- <td><a href="detail.do?checklist_no=${board.checklist_no }">${board.check_title }</a></td> --%>
+				<td><a href="list20.do?checklist_no=${board.checklist_no }">${board.check_title }</a></td>
 			</tr>
 		</c:forEach>
 	</table>
