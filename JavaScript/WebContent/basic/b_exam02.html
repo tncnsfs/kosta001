@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*Java Script 자료형 */
+
+	// 숫자형(number)
+	var intNum = 10;
+	var floatNum = 3.14;
+	console.log(typeof intNum);
+	console.log(typeof floatNUm);
+
+	// 문자형 (string)
+	var singS = 'single';
+	var doubleS = "double";
+	console.log(typeof singS);
+	console.log(typeof doubleS);
+
+	// 논리형 (boolean)
+	var boolVar = true;
+	console.log(typeof boolVar);
+
+	// Null 
+	var nullVar = null;
+	console.log(typeof nullVar);
+
+	// undefined
+	var emptyVar
+	console.log(typeof emptyVar);
+
+	// function 
+	var func = function() {}
+	console.log(typeof func);
+
+	intNum = "안녕";
+	console.log(typeof intNum);
+
+	// 형변환 
+	var num = "15안녕"; //eval(), parseInt() 문자열 => 정수형 
+	//num = eval(num); //<- 에러남, 안녕 들어갔을시  
+	num = parseInt(num);
+	num2 = num + 10;
+	console.log(num2);
+
+	// 자동 형변환 관련 
+	var num3 = "15";
+	if (num3 == 15) {
+		// if (num3 === 15) {
+		alert('같다');
+	} else {
+		alert('다르다');
+	}
+		
+</script>
+</head>
+<body>
+
+</body>
+</html>
+

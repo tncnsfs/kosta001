@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+// 사용자 정의 객체
+// 1. Object객체 
+
+	var foo = new Object();
+	foo.name = "홍길동";
+	foo.age = 20;
+	
+	
+	
+/* 	console.log("이름: " + foo.name);
+	console.log("나이: " + foo.age); 
+ */
+	
+ 	//2. 리터럴 형식 
+ 	var foo2 = {
+		 name: "박길동",
+		 age: 30,
+		 display: function() {
+			console.log(this.name);
+		}
+ }
+
+// foo2.display();
+
+ // 함수도 객체이다. 
+ 	function add(x, y){
+		return x+y;
+	}
+ 
+ 	add.result = add(100,200);
+ 	add.status = 'ok';
+ 	
+ 	console.log(add.result);
+ 	console.log(add.status);
+ 	
+ 	// 퀴즈 , 리터럴 형식으로 객체를 임의로 생성 후 
+ 	// 동적 프로퍼티와 메소드를 등록후 호출해서 사용하는 예제를 구현하시오. 
+ 	
+ 	var foo3 = {
+ 		CompanyName: "고조선",
+ 		cage: 500,
+ 		display2: function() {
+			console.log(this.CompanyName + ": " + this.cage + "년")
+		}
+ 	}
+	foo3.display2();
+ 	foo3.points = "주몽"; 	
+ 	console.log(foo3.points);
+ 	
+/*  	var obj = {}
+ 	obj.name = '조길동';
+ 	obj.display = function() {
+		return this.name;
+	}
+ 	console.log(obj.display()); */
+ 	
+		 	
+ 	
+ 	
+ 	
+</script>
+</head>
+<body>
+
+</body>
+</html>

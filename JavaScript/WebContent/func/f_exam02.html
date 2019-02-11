@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 함수를 호출할 경우 생성되는 실행 컨텍스트 영역 
+	/* var var1 = 10;
+	var var2 = 20;
+	
+	function func(){
+		var var1 = 1;
+		var var2 = 2;
+		
+		console.log(var1);
+		console.log(var2);
+	}
+	
+	func();
+	
+	console.log(var1);
+	console.log(var2); */
+	
+/* 	var value = "value1";
+	
+	function printFunc(){
+		var value = "value2";
+		
+		function printValue(){
+			return value;
+		}
+		
+		console.log(printValue());
+	}
+	
+	printFunc();
+ */
+ 
+/*  	var value = "value1";
+ 
+	 function printValue(){
+		 return value;
+	 }
+	
+	 function printFunc(func){
+		 var value = "value2";
+		 
+		 console.log(func());
+	 }
+	 
+	 printFunc(printValue); */
+ 
+	 
+	 
+ 	// 클로저 
+/*  	function outerFunc(){
+		 var x = 10;
+		 
+		 var innerFunc = function () {
+			console.log(x);
+		}
+		 
+		 return innerFunc;
+	 }
+ 	
+	var inner = outerFunc();
+ 	inner(); */
+
+ 	/////////////////////////////////////////////////////////
+/*  	function outer(arg1, arg2) {
+		var local = 8;
+		function inner(innerArg) {
+			console.log((arg1 + arg2)/ (innerArg + local));
+		}
+		
+		return inner;
+	}
+ 	
+ 	//var exam = outer(16,14);
+ 	//exam(2);
+ 	outer(16,14)(2); */
+
+ 	// 클로저를 이용하여 함수에 선언된 변수값 100을 실행컨텍스트가 종료
+ 	// 후에도 외부에서 사용이 가능한 예제를 만들어 보자. 
+ 	
+ 	function outer(ar1, ar2){
+ 		var loc =100;
+ 		var loc1 = ar1 + ar2;
+ 		function inner(inn) {
+			console.log((loc + inn)*loc1);
+		}
+ 		return inner;
+ 	}
+ 	
+ 	//outer(10,20)(5);
+ 	var calin = outer(1,1);
+ 	calin(5);
+
+ 	
+ 	
+ 	
+ 	
+</script>
+</head>
+<body>
+
+</body>
+</html>

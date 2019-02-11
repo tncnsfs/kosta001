@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var myVar = "전역변수";
+	
+	function myFunc(){
+		var myVar = "지역변수"
+		document.write("지역변수: " + myVar + "<br>");
+//		document.write("전역변수: " + this.myVar);
+		document.write("전역변수: " + window.myVar);
+	}
+	
+	myFunc();
+		
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
